@@ -11,8 +11,12 @@ using namespace std;
 void printShaderLog(GLuint shader);
 void printProgramLog(int prog);
 bool checkOpenGLError();
-string readShaderSource(const char *filePath);
-GLuint createShaderProgram(const char *vertex, const char *fragment);
+string readShaderSource(const char* filePath);
+GLuint createShaderProgram(const char* vertex, const char* fragment);
 GLuint loadTexture(const char* texImagePath);
+float* silverAmbient();
+float* silverDiffuse();
+float* silverSpecular();
+float silverShininess();
 
 #endif // !UTILS_H

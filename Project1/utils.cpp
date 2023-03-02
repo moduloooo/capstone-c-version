@@ -1,5 +1,4 @@
 #include <string>
-#include <SOIL2/SOIL2.h>
 #include "utils.h"
 using namespace std;
 
@@ -40,7 +39,7 @@ bool checkOpenGLError() {
 	return foundError;
 }
 
-string readShaderSource(const char *filePath) {
+string readShaderSource(const char* filePath) {
 	string content;
 	ifstream fileStream(filePath, ios::in);
 	string line = "";
@@ -52,7 +51,7 @@ string readShaderSource(const char *filePath) {
 	return content;
 }
 
-GLuint createShaderProgram(const char *vertex, const char *fragment) {
+GLuint createShaderProgram(const char* vertex, const char* fragment) {
 	string vertShaderStr = readShaderSource(vertex);
 	string fragShaderStr = readShaderSource(fragment);
 
@@ -100,10 +99,7 @@ GLuint createShaderProgram(const char *vertex, const char *fragment) {
 	return vfProgram;
 }
 
-GLuint loadTexture(const char* texImagePath) {
-	GLuint textureID;
-	textureID = SOIL_load_OGL_texture(texImagePath,
-		SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
-	if (textureID == 0) cout << "could not find texture file" << texImagePath << endl;
-	return textureID;
-}
+float* silverAmbient() { static float a[4] = { 0.1923f, 0.1923f, 0.1923f, 1 }; return (float*)a; }
+float* silverDiffuse() { static float a[4] = { 0.5075f, 0.5075f, 0.5075f, 1 }; return (float*)a; }
+float* silverSpecular() { static float a[4] = { 0.5083f, 0.5083f, 0.5083f, 1 }; return (float*)a; }
+float silverShininess() { return 51.2f; }
